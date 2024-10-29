@@ -82,8 +82,8 @@ PUT /users/:id
 DELETE /users/:id
 
 ## cassandra-app/
-database.js      # Configuration and connection to Cassandra
-app.js           # CRUD logic for the users table
-server.js        # Server configuration and API routes
-package.json     # Node.js project configuration file
-README.md        # Project documentation
+# database.js      # Configuration and connection to Cassandra
+# app.js           # CRUD logic for the users table
+# server.js        # Server configuration and API routes
+# package.json     # Node.js project configuration file
+# README.md        # Project documentation
