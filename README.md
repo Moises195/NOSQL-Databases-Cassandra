@@ -91,10 +91,8 @@ DELETE /users/
 ## Estructura del Proyecto
 El proyecto está organizado de la siguiente manera:
 
-plaintext
-cassandra-app/
-├── database.js      # Configuración y conexión a Cassandra
-├── app.js           # Lógica de CRUD para la tabla de usuarios
-├── server.js        # Configuración del servidor y rutas de la API
-├── package.json     # Archivo de configuración del proyecto Node.js
-└── README.md        # Documentación del proyecto
+- database.js      # Configuración y conexión a Cassandra
+- app.js           # Lógica de CRUD para la tabla de usuarios
+- server.js        # Configuración del servidor y rutas de la API
+- package.json     # Archivo de configuración del proyecto Node.js
+- README.md        # Documentación del proyecto
