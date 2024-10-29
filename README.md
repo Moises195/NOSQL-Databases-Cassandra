@@ -1,27 +1,43 @@
 # Building an App with NoSQL Database Cassandra
 
-Guía de Pasos: Aplicación CRUD con Apache Cassandra
-Esta guía te llevará paso a paso para crear y ejecutar una aplicación CRUD usando Apache Cassandra y Node.js.
+## Aplicación CRUD con Apache Cassandra
+Este proyecto es una aplicación CRUD desarrollada en Node.js que utiliza Apache Cassandra como base de datos NoSQL. Está diseñado para mostrar cómo construir una aplicación escalable y distribuida, capaz de realizar operaciones básicas de creación, lectura, actualización y eliminación en una base de datos de usuarios, aprovechando las ventajas de Cassandra en cuanto a disponibilidad y rendimiento.
 
-1. Clona el Repositorio
-Abre tu terminal y ejecuta el siguiente comando para clonar el proyecto en tu máquina local:
+## Características
+Apache Cassandra: Base de datos NoSQL distribuida, ideal para aplicaciones que necesitan alta disponibilidad, resistencia a fallos y capacidad de manejar grandes volúmenes de datos.
+API REST: Interfaz API sencilla creada con Express.js, que expone endpoints para gestionar usuarios y sus datos.
+Operaciones CRUD: Implementación de las operaciones CRUD (Crear, Leer, Actualizar y Eliminar) sobre una tabla de usuarios en Cassandra.
+Modelo de Datos: Diseño de esquema basado en particiones y claves principales, optimizando la estructura de datos para mejorar el rendimiento de las consultas y el escalado horizontal.
+Conexión a Cassandra: Integración del controlador cassandra-driver para Node.js, que facilita la conexión y comunicación con el clúster de Cassandra.
+Tecnologías Utilizadas
+Apache Cassandra: Base de datos NoSQL
+Node.js: Entorno de ejecución de JavaScript
+Express.js: Framework para crear API REST en Node.js
+cassandra-driver: Controlador de Cassandra para Node.js
+
+## Requisitos
+Asegúrate de tener instalados los siguientes componentes:
+
+Node.js y npm
+Apache Cassandra (instalado y en funcionamiento)
+Cassandra-driver (se instalará con npm)
+
+## Instalación y Configuración
+Clonar el repositorio:
 
 git clone https://github.com/tu_usuario/nombre_repositorio.git
 cd nombre_repositorio
 
-2. Instala las Dependencias
-Asegúrate de que estás en el directorio del proyecto y luego instala las dependencias de Node.js:
+## Instalar las dependencias:
 
 npm install
 
-3. Configura la Conexión a Cassandra
-Abre el archivo database.js.
-Configura los contactPoints y localDataCenter de acuerdo con la configuración de tu clúster de Cassandra para garantizar la conexión.
+## Configurar la conexión a Cassandra:
 
-5. Crea el Keyspace y la Tabla en Cassandra
-Inicia el shell de Cassandra (cqlsh) en tu terminal.
+En el archivo database.js, asegúrate de que los contactPoints y localDataCenter corresponden a la configuración de tu clúster de Cassandra.
+Crear la base de datos y tablas:
 
-Ejecuta los siguientes comandos para crear el keyspace y la tabla:
+## Inicia el shell de Cassandra (cqlsh) y ejecuta los comandos en el archivo schema.cql para crear el keyspace y las tablas necesarias:
 
 CREATE KEYSPACE IF NOT EXISTS social_app
 WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '3'};
@@ -33,45 +49,52 @@ CREATE TABLE social_app.users (
   created_at TIMESTAMP
 );
 
-5. Inicia el Servidor
-Ejecuta el siguiente comando para iniciar el servidor de la aplicación:
+## Iniciar el servidor:
 
 node server.js
 
-Tu aplicación ahora estará ejecutándose en http://localhost:3000.
+## Uso
+Una vez que el servidor está en funcionamiento, la aplicación estará disponible en http://localhost:3000. Puedes usar herramientas como Postman o curl para interactuar con los endpoints de la API.
 
-6. Prueba los Endpoints de la API
-Usa Postman o curl para interactuar con los endpoints de la API:
+## Endpoints de la API
+POST /users: Crea un nuevo usuario.
 
-Endpoints Disponibles
-Crear un Usuario (POST /users):
-
-En el body de la solicitud (JSON):
+Body (JSON):
 
 {
   "name": "Nombre de Usuario",
   "email": "usuario@correo.com"
 }
-Obtener un Usuario (GET /users/
-):
+GET /users/
+: Obtiene un usuario por su ID único.
 
-Respuesta esperada (JSON):
+Respuesta (JSON):
+
 {
   "user_id": "UUID",
   "name": "Nombre de Usuario",
   "email": "usuario@correo.com",
   "created_at": "Fecha de creación"
 }
-Actualizar un Usuario (PUT /users/
-):
+PUT /users/
+: Actualiza la información de un usuario.
 
-En el body de la solicitud (JSON):
+Body (JSON):
 
 {
   "name": "Nuevo Nombre",
   "email": "nuevo@correo.com"
 }
-Eliminar un Usuario (DELETE /users/
-):
+DELETE /users/
+: Elimina un usuario por su ID.
 
-Elimina el usuario con el id especificado.
+## Estructura del Proyecto
+El proyecto está organizado de la siguiente manera:
+
+plaintext
+cassandra-app/
+├── database.js      # Configuración y conexión a Cassandra
+├── app.js           # Lógica de CRUD para la tabla de usuarios
+├── server.js        # Configuración del servidor y rutas de la API
+├── package.json     # Archivo de configuración del proyecto Node.js
+└── README.md        # Documentación del proyecto
